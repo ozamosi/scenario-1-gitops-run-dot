@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: root # Because you pointed as the directory root, we call it
+             # "root" as a special case
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: . # This is the current working directory followed
+          # by the path you specified to gitops run
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
